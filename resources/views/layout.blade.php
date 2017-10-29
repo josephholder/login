@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Welcome my my site. feel free to have a look at joseph holders CV and i hope you are impressed">
     <title>joseph holder</title>
 
-    {{--<?php--}}
+
     {{--if($path_end == 'signup.php' || $path_end == 'login.php'){--}}
         {{--echo '<link' . ' rel="stylesheet"' . ' type="text/css"'  . ' href="'. $root_path . 'contact/files.css">';--}}
     {{--}--}}
-    {{--?>--}}
-    {{--<link rel="stylesheet" type="text/css" href="<?php echo $root_path; ?>files/semantic.min.css">--}}
-    {{--<link rel="stylesheet" type="text/css" href="<?php echo $root_path; ?>files/files.css">--}}
-    {{--<link rel="stylesheet" type="text/css" href="<?php echo $localpath; ?>assets/css/files.css">--}}
+    <link rel="stylesheet" type="text/css" href="http://josephholder.com/contact/files.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ $josephPath }}files/files.css">
 
 </head>
 <body>
@@ -55,6 +55,9 @@
         </div>
     </section>
 
+    <section>
+        @yield('content')
+    </section>
 
     <footer>
         <div class="ui container">
@@ -69,10 +72,10 @@
         </div>
     </footer>
 </div>
-{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>--}}
-{{--<script type="text/javascript" src="<?php echo "$root_path"; ?>files/semantic.min.js"></script>--}}
-{{--<script type="text/javascript" src="<?php echo "$localpath"; ?>assets/js/script.js"></script>--}}
-
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
+<!--<script type="text/javascript" src="{{-- $rootPath --}}files/semantic.min.js"></script> -->
+<!--<script type="text/javascript" src="{{-- $rootPath --}}assets/js/script.js"></script>-->
+<script type="text/javascript" src="{{  url('js/app.js') }}"></script>
 {{--<script type="text/javascript">--}}
     {{--$(document).ready(function () {--}}
         {{--$('#dropdownMobile').click(function (){--}}

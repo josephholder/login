@@ -11,6 +11,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap-sass');
+    require("semantic-ui/dist/semantic.min.js");
 } catch (e) {}
 
 /**
