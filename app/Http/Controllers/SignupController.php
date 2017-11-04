@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class SignupController extends Controller
 {
@@ -38,14 +41,17 @@ class SignupController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'username' => 'required|unique:posts|max:255',
-            'password' => 'required',
-        ]);
+//      TODO add validation
+//       $validatedData = $request->validate([
+//           'username' => 'required|unique:posts|max:255',
+//           'password' => 'required',
+//       ]);
 
-        $newUser = new User();
-
-
+        (new User)->fill([
+            'email' => request('email'),
+            'password' => Hash::make(request('password'))
+        ])->save();
+       return redirect('/');
     }
 
     /**

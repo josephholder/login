@@ -18,5 +18,4 @@ Route::post('login', 'LoginController@store');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/signup', 'SignupController@index')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
-
+Route::post('/signup', 'SignupController@store');

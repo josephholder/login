@@ -1,6 +1,6 @@
 @extends ('layout')
 
-@section
+@section ('content')
     <section class="profileStylePage">
         <div class="ui container profileInnerPage">
             <div class="ui container">
@@ -14,7 +14,8 @@
                 <div class="ui grid graypPanelProfile">
                     <div class="four wide column" style="margin-top: -100px;">
                         <div class="column" style="/*margin-left:20px*/">
-                            <a id="activator_image"><img class="ui fluid image profilepic" src="<?php if (!empty($user_records["profile_image"])) { echo "includes/uploads/" . $userid . "/" . $user_records["profile_image"]; } else { echo "assets/images/placehold300x200.png"; } ?>"></a>
+                            {{-- if (!empty($user_records["profile_image"])) { echo "includes/uploads/" . $userid . "/" . $user_records["profile_image"]; } else { echo "assets/images/placehold300x200.png"; }  --}}
+                            <a id="activator_image"><img class="ui fluid image profilepic" src="http://placehold.it/300x200/"></a>
                             <div><p>Your name (first name and lastname)</p></div>
                             <div><p>Your name</p></div>
                             <div><p>you currently work at: Workplacement</p></div>
@@ -41,7 +42,7 @@
                                         <i class="search link icon"></i>
                                     </div>
                                 </div>
-                                <a class="ui item" href="includes/signupform/logout.php">Logout</a>
+                                <a class="ui item" href="/logout">Logout</a>
                             </div>
                         </div>
                         <div class="ui vertical align segment" style="border-bottom: 1px solid rgba(34,36,38,.15);"></div>
@@ -52,12 +53,13 @@
                             <h3>You can record your message here</h3>
                         </div>
                         <div class="ui grid padded centered">
-                            <p class="paragraphSize" style="text-overflow: ellipsis;overflow: hidden;"><?php if ($results['content'] != null) {
-                                    echo $results['content'];
-                                } else {
-                                    echo "you can change the information here";
-                                } ?></p>
-
+                            <p class="paragraphSize" style="text-overflow: ellipsis;overflow: hidden;">
+                                {{--if ($results['content'] != null) {--}}
+                                    {{--echo $results['content'];--}}
+                                {{--} else {--}}
+                                    {{--echo "you can change the information here";--}}
+                                {{--} --}}
+                            </p>
                         </div>
                     </div>
                     <div class="sixteen wide column" style="text-align:center; margin-top:10px;"><a id="activator" class="text-change textChangeBtn" style="cursor:pointer; color: aliceblue;">change the text</a></div>
@@ -91,12 +93,13 @@
                 <h3>You can record your message here</h3>
             </div>
             <div class="ui grid padded centered">
-                <p class="paragraphSize" style="text-overflow: ellipsis;overflow: hidden;"><?php if ($results['content'] != null) {
-                        echo $results['content'];
-                    } else {
-                        echo "you can change the information here";
-                    } ?></p>
-
+                <p class="paragraphSize" style="text-overflow: ellipsis;overflow: hidden;">
+{{--                    -->//if ($results['content'] != null) {--}}
+{{--                        echo $results['content'];--}}
+{{--                    } else {--}}
+{{--                        echo "you can change the information here";--}}
+{{--                    } --}}
+                </p>
             </div>
         </div>
         <div class="sixteen wide column" style="text-align:center; margin-top:10px;"><a id="activator" class="text-change">change the text</a></div>
@@ -110,7 +113,7 @@
     <div class="box" id="box">
         <a class="boxclose" id="boxclose">X</a>
         <div style="text-align:center; margin-bottom:10px;"><h1>Important message</h1></div>
-        <form method="post" action="index.php"><?php //echo $localpath; ?>
+        <form method="post" action="index.php">
             <textarea class="inputform" name="notes"></textarea>
             <div style="text-align:center; margin-top:10px;"><input type="submit" name="submit" style="text-align:center;"></div>
         </form>
@@ -119,17 +122,18 @@
     <div class="box" id="box_image">
         <a class="boxclose" id="boxclose_2">X</a>
         <div style="text-align:center; margin-bottom:10px;"><h1>Important message</h1></div>
-        <form method="post" action="index.php"><?php //echo $localpath; ?>
-            <div class="ui grid imgCollection">
-                <?php foreach($images as $image) {
-                $image_name = explode( "/", $image );
-                echo '
-				<div class="three wide column">
-					<input type="hidden" name="nw_select_img" value="' . $image_name['3'] . '">
-				  	<button class="imgbutton" name="submit_nw_img" value="' . $image_name['3'] . '"><img class="ui fluid image size_image" src="'.$image.'" /></button>
-				</div>';
-                } ?>
-            </div>
+        <form method="post" action="index.php">
+
+            {{-- <div class="ui grid imgCollection">--}}
+                {{--foreach($images as $image) {--}}
+                {{--$image_name = explode( "/", $image );--}}
+                {{--echo '--}}
+				{{--<div class="three wide column">--}}
+					{{--<input type="hidden" name="nw_select_img" value="' . $image_name['3'] . '">--}}
+				  	{{--<button class="imgbutton" name="submit_nw_img" value="' . $image_name['3'] . '"><img class="ui fluid image size_image" src="'.$image.'" /></button>--}}
+				{{--</div>';--}}
+                {{--} --}}
+            {{--</div>--}}
         </form>
     </div>
 
