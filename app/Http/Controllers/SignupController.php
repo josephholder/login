@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Requests\storeNewUser;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SignupController extends Controller
@@ -36,21 +35,16 @@ class SignupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param storeNewUser $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreNewUser $request)
     {
-//      TODO add validation
-//       $validatedData = $request->validate([
-//           'username' => 'required|unique:posts|max:255',
-//           'password' => 'required',
-//       ]);
-
         (new User)->fill([
-            'email' => request('email'),
-            'password' => Hash::make(request('password'))
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password'))
         ])->save();
+
        return redirect('/');
     }
 

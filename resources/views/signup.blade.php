@@ -11,7 +11,12 @@
                 <h2 class="formheaderspacing">Password:</h2>
 
                 <input type="password" name="password" placeholder="password" id="inputEmail" class="fillSelect">
-                <p class="fill-1" style="display: block;"><?php if (!empty($message)) { echo $message; }?></p>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p class="fill-1" style="display: block;">{{ $error }}</p>
+                    @endforeach
+                @endif
+
                 <input type="submit" name="submit" class="submit2">
             </form>
             <a href="/" style="float: left; margin-top:10px">login</a>
