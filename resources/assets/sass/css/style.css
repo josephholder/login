@@ -1,10 +1,16 @@
+.ui.container {
+    padding: 0;
+}
+.ui.menu .item {
+    font-size: 14px;
+}
 .overlay{
     background: rgba(0, 0, 0, 0.1);
     position:fixed;
-    top:0px;
-    bottom:0px;
-    left:0px;
-    right:0px;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
     z-index:100;
 }
 .box{
@@ -23,7 +29,7 @@
     -webkit-box-shadow: 0 1px 5px #333;
     z-index:101;
 }
-a.boxclose{
+a.boxclose {
     float: right;
     width: 26px;
     height: 26px;
@@ -38,7 +44,7 @@ a.boxclose{
     font-size: 22px;
     padding-top: 4px;
 }
-.inputform{
+.inputform {
     width: 100%;
     resize: none;
     height: 200px;
@@ -66,7 +72,6 @@ a.boxclose{
     background-size: cover;
     width: 100%;
     margin: 0;
-
 }
 .inputfile {
     width: 0.1px;
@@ -76,8 +81,6 @@ a.boxclose{
     position: absolute;
     z-index: -1;
 }
-
-
 .inputfile + label {
     font-size: 20px;
     font-weight: 700;
@@ -88,7 +91,6 @@ a.boxclose{
     transition: 400ms;
     cursor: pointer;
 }
-
 .inputfile:focus + label, .inputfile + label:hover {
     background-color: #4183c4;
     transition: 400ms;
@@ -102,7 +104,6 @@ a.boxclose{
 .profilepic:hover{
     opacity: 0.92;
     transition: 400ms;
-
 }
 .size_image{
     max-height: 200px;
@@ -110,14 +111,10 @@ a.boxclose{
     display: flex;
     cursor: pointer;
 }
-
 #box_image{
     left: 20%;
     right: 20%;
-
 }
-
-
 .imgCollection {
     display: block;
     margin: 0 auto;
@@ -125,13 +122,11 @@ a.boxclose{
     overflow-y: scroll;
     width: 100%;
 }
-
 button {
     background:none;
     border:none;
     outline: none;
 }
-
 .textChangeBtn {
     cursor: pointer;
     font-size: 20px;

@@ -7,19 +7,51 @@
 
 require('./bootstrap');
 
-//window.Vue = require('vue');
+//toggle function for mobile
+$(document).ready(function () {
+    $('#dropdownMobile').click(function (){
+        console.log('it works');
+        $('#menuDropdown').toggle();
+    });
+});
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-//
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-//
-// const app = new Vue({
-//     el: '#app'
-// });
+$(document).ready(function() {
+    $('#photoimg').on('change', function() {
+        $("#preview").html('');
+        $("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+        $("#imageform").ajaxForm({
+            target: '#preview'
+        }).submit();
+        setTimeout(function(){
+            window.location.reload(false);
+        }, 1000);
+    });
+});
 
 
+$(document).ready(function() {
+    $(function() {
+        $('#activator').click(function(){
+            $('#overlay').fadeIn('fast',function(){
+                $('#box').animate({'top':'160px'},500);
+            });
+        });
+        $('#activator_image').click(function(){
+            $('#overlay_2').fadeIn('fast',function(){
+                $('#box_image').animate({'top':'160px'},500);
+            });
+        });
+        $('#boxclose').click(function(){
+            $('#box').animate({'top':'-700px'},500,function(){
+                $('#overlay').fadeOut('fast');
+            });
+        });
+        $('#boxclose_2').click(function(){
+            $('#box_image').animate({'top':'-700px'},500,function(){
+                $('#overlay_2').fadeOut('fast');
+            });
+        });
+    });
 
+    $('.ui.dropdown').dropdown();
+});

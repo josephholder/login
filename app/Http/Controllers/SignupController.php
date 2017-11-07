@@ -45,7 +45,7 @@ class SignupController extends Controller
             'password' => Hash::make($request->get('password'))
         ])->save();
 
-       return redirect('/');
+        return redirect('/');
     }
 
     /**
