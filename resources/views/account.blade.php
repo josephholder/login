@@ -1,4 +1,4 @@
-@extends ('layout')
+@extends ('layouts.layout')
 
 @section ('content')
     <section class="profileStylePage">
@@ -113,8 +113,10 @@
     <div class="box" id="box">
         <a class="boxclose" id="boxclose">X</a>
         <div style="text-align:center; margin-bottom:10px;"><h1>Important message</h1></div>
-        <form method="post" action="index.php">
-            <textarea class="inputform" name="notes"></textarea>
+        <form method="post" action="{{ url('/') }}">
+            <label>
+                <textarea class="inputform" name="notes"></textarea>
+            </label>
             <div style="text-align:center; margin-top:10px;"><input type="submit" name="submit" style="text-align:center;"></div>
         </form>
     </div>
@@ -122,7 +124,7 @@
     <div class="box" id="box_image">
         <a class="boxclose" id="boxclose_2">X</a>
         <div style="text-align:center; margin-bottom:10px;"><h1>Important message</h1></div>
-        <form method="post" action="index.php">
+        <form method="post" action="{{  url('/') }}">
 
             {{-- <div class="ui grid imgCollection">--}}
                 {{--foreach($images as $image) {--}}

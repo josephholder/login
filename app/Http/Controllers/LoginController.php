@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,28 +21,19 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param LoginUser $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LoginUser $request)
     {
+        //TODO Validate before trying to authenticate a user
         if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
             ])
-        ) {
+        ){
             // Authentication passed...
             return redirect()->intended('/');
         } else {
@@ -50,47 +42,14 @@ class LoginController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        //TODO Create a log out method
+        Auth::logout();
+        return redirect()->home();
     }
 }

@@ -90,6 +90,6 @@ class SignupController extends Controller
      */
     public function destroy($id)
     {
-        //
+       //
     }
 }

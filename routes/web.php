@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', 'AccountController@index');
+Route::get('/', 'AccountController@index')->name('home');
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('login', 'LoginController@store');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/logout', 'LoginController@destroy')->name('logout');
 
 Route::get('/signup', 'SignupController@index')->name('register');
 Route::post('/signup', 'SignupController@store');
