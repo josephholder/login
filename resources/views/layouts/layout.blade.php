@@ -12,7 +12,7 @@
         {{--echo '<link' . ' rel="stylesheet"' . ' type="text/css"'  . ' href="'. $root_path . 'contact/files.css">';--}}
     {{--}--}}
     <link rel="stylesheet" type="text/css" href="http://josephholder.com/contact/files.css">
-    <link rel="stylesheet" type="text   /css" href="{{ url('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ $josephPath }}files/files.css">
 
 </head>
