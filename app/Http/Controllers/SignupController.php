@@ -4,11 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\storeNewUser;
 use App\User;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SignupController extends Controller
 {
+//    use Authenticatable;
+    Use RedirectsUsers;
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
+
+    /**
+     * SignupController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware('guest');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,11 +60,14 @@ class SignupController extends Controller
      */
     public function store(StoreNewUser $request)
     {
-        (new User)->fill([
+        $user = new User();
+        $user->fill([
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password'))
         ])->save();
 
+        auth()->login($user);
+        session()->flash('header', 'Thank You for Signing up');
         return redirect('/');
     }
 

@@ -7,7 +7,11 @@
                 <div class="ui grid">
                     <div class="sixteen wide column">
                         <div class="backgroundProfileImage">
-                            <h2 style="text-align: center; color: #f2f2f2;position: relative;top: 50%; transform: translateY(-50%);font-size: 40px;">Your profile</h2>
+                            @if (Session('header'))
+                                <h2 style="text-align: center; color: #f2f2f2;position: relative;top: 50%; transform: translateY(-50%);font-size: 40px;">{{ Session('header') }}</h2>
+                            @else
+                                <h2 style="text-align: center; color: #f2f2f2;position: relative;top: 50%; transform: translateY(-50%);font-size: 40px;">Your profile</h2>
+                            @endif
                         </div>
                     </div>
                 </div>

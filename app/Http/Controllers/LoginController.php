@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginUser;
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    /**
+     * LoginController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware('guest')->except('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +25,7 @@ class LoginController extends Controller
     public function index()
     {
         return view('login')->with([
-            'message' => ''
+            'message' => '',
         ]);
     }
 
@@ -37,7 +46,7 @@ class LoginController extends Controller
             // Authentication passed...
             return redirect()->intended('/');
         } else {
-            return redirect('/login');
+            return redirect('/login')->withErrors('Login unsuccessful');
         }
     }
 
