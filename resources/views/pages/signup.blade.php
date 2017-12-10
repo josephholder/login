@@ -1,4 +1,4 @@
-@extends ('layouts.layout')
+@extends ('layouts.account')
 
 @section('content')
     <div class="contactForm" style="height:350px;">

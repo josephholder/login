@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\storeNewUser;
 use App\User;
-use Illuminate\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class SignupController extends Controller
 {
@@ -36,7 +33,7 @@ class SignupController extends Controller
      */
     public function index()
     {
-        return view('signup')->with([
+        return view('pages.signup')->with([
             'rootPath' => app_path(),
             'message' => ''
         ]);
@@ -63,12 +60,12 @@ class SignupController extends Controller
         $user = new User();
         $user->fill([
             'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password'))
+            'password' => bcrypt($request->get('password'))
         ])->save();
 
         auth()->login($user);
         session()->flash('header', 'Thank You for Signing up');
-        return redirect('/');
+        return redirect()->to('notes');
     }
 
     /**

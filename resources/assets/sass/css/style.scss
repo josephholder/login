@@ -127,6 +127,16 @@ button {
     border:none;
     outline: none;
 }
+
+button.rest {
+    background:none;
+    border:none;
+    outline: none;
+    color: #4183c4;
+    font-family: 'Amaranth', sans-serif;
+}
+
+
 .textChangeBtn {
     cursor: pointer;
     font-size: 20px;
@@ -139,3 +149,14 @@ a.textChangeBtn:hover{
     transition: 300ms;
     background-color: #4183c4!important;
 }
+.height300 {
+    height: 300px;
+}
+
+.noteOverflow {
+    overflow-y: scroll;
+    display: block;
+    width: 100%;
+    height: 300px;
+}
+

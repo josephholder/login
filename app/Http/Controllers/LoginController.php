@@ -24,7 +24,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('login')->with([
+        return view('pages.login')->with([
             'message' => '',
         ]);
     }
@@ -39,12 +39,12 @@ class LoginController extends Controller
     {
         //TODO Validate before trying to authenticate a user
         if (Auth::attempt([
-            'email' => $request->get('email'),
-            'password' => $request->get('password')
+            'email' => $request->input('email'),
+            'password' => $request->input('password')
             ])
         ){
             // Authentication passed...
-            return redirect()->intended('/');
+            return redirect()->to('/notes');
         } else {
             return redirect('/login')->withErrors('Login unsuccessful');
         }

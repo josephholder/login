@@ -13,6 +13,8 @@
 
 Route::get('/', 'AccountController@index')->name('home');
 
+Route::resource('notes', 'NotesController')->except(['create', 'edit']);
+
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('login', 'LoginController@store');
 Route::get('/logout', 'LoginController@destroy')->name('logout');

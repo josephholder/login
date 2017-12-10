@@ -51,6 +51,21 @@ $(document).ready(function() {
                 $('#overlay_2').fadeOut('fast');
             });
         });
+        $('.edit').click(function(e) {
+            e.preventDefault();
+            var note = $(this).data('note-url');
+            console.log(note);
+            $('#editForm').attr('action', note);
+
+            $('#overlay').fadeIn('fast',function(){
+                $('#box_edit').animate({'top':'160px'},500);
+            });
+        });
+        $('#boxclose_3').click(function(){
+            $('#box_edit').animate({'top':'-700px'},500,function(){
+                $('#overlay').fadeOut('fast');
+            });
+        });
     });
 
     $('.ui.dropdown').dropdown();
